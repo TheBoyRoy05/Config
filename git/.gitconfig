@@ -1,0 +1,12 @@
+[alias]
+	ac = "!f() { \
+		git diff --cached --quiet && { git add -A || return; }; \
+		case \"$1\" in \
+			-e) shift; git commit --amend \"$@\";; \
+			-n) shift; git commit \"$@\";; \
+			*) git commit --amend --no-edit \"$@\";; \
+		esac; \
+	}; f"
+	acp = "!f() { \
+		git ac \"$@\" && git push --force-with-lease --force-if-includes; \
+	}; f"

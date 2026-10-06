@@ -1,0 +1,69 @@
+{
+    "files.autoSave": "afterDelay",
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.rulers": [80, 100],
+    "editor.wordWrap": "on",
+    "editor.minimap.enabled": false,
+    "diffEditor.ignoreTrimWhitespace": true,
+    "diffEditor.renderSideBySide": false,
+    "workbench.colorTheme": "One Dark Vivid",
+    "workbench.iconTheme": "material-icon-theme",
+    "git.enableSmartCommit": true,
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "[git-commit]": {
+        "editor.rulers": [80, 100]
+    },
+    "terminal.integrated.profiles.osx": {
+        "zsh": {
+            "path": "/bin/zsh",
+            "args": ["-l"]
+        }
+    },
+    "files.watcherExclude": {
+        "**/build/**": true,
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/.hg/store/**": true
+    },
+    "files.exclude": {
+        ".viceroy": true,
+        "apollo-overrides": true,
+        "release-info": true,
+        "src/*/build": false,
+        "build": false,
+        "env": true,
+        "packageInfo*": true,
+        ".bemol": true,
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true
+    },
+    "files.associations": {
+        "Config": "plaintext"
+    },
+    "search.exclude": {
+        "env": true,
+        "src/*/build": true,
+        "build": true,
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/*.code-search": true
+    },
+    "[brazilPackageConfig]": {
+        "workbench.editor.languageDetection": false
+    },
+    "viceroy.config.lastVersion": "0.53.203192",
+    "viceroy.config.internal.lastUpdateTime": "2026-10-05T03:48:35.900Z",
+    "kiroAgent.configureMCP": "Enabled",
+    "kiroAgent.enableTabAutocomplete": true,
+    "kiroAgent.enableCodebaseIndexing": true,
+    "kiroAgent.notifications.agent.failure": true,
+    "kiroAgent.agentAutonomy": "Autopilot",
+    "kiroAgent.workflows.enabled": true,
+    "python.languageServer": "Default",
+    "svelte.enable-ts-plugin": true,
+    "editor.renderWhitespace": "trailing"
+}

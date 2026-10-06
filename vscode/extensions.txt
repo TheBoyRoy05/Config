@@ -1,0 +1,11 @@
+asbx.remote-ssh
+eamodio.gitlens
+edwinkofler.vscode-hyperupcall-pack-latex
+meta.pyrefly
+ms-python.debugpy
+ms-python.python
+ms-python.vscode-python-envs
+mskelton.one-dark-theme
+pkief.material-icon-theme
+yandeu.five-server
+yoavbls.pretty-ts-errors
