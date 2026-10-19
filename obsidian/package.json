@@ -1,0 +1,9 @@
+{
+  "name": "obsidian-config-scripts",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "classic-level": "3.0.0",
+    "lz-string": "1.5.0"
+  }
+}

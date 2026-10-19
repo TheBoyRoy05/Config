@@ -22,6 +22,12 @@
     },
     "files.watcherExclude": {
         "**/build/**": true,
+        ".git/objects/**": true,
+        ".git/subtree-cache/**": true,
+        ".hg/store/**": true,
+        "*/.git/objects/**": true,
+        "*/.git/subtree-cache/**": true,
+        "*/.hg/store/**": true,
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
         "**/.hg/store/**": true
@@ -55,8 +61,8 @@
     "[brazilPackageConfig]": {
         "workbench.editor.languageDetection": false
     },
-    "viceroy.config.lastVersion": "0.53.203192",
-    "viceroy.config.internal.lastUpdateTime": "2026-10-05T03:48:35.900Z",
+    "viceroy.config.lastVersion": "0.53.203214",
+    "viceroy.config.internal.lastUpdateTime": "2026-10-18T23:41:30.677Z",
     "kiroAgent.configureMCP": "Enabled",
     "kiroAgent.enableTabAutocomplete": true,
     "kiroAgent.enableCodebaseIndexing": true,
