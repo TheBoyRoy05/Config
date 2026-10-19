@@ -1,0 +1,42 @@
+#!/bin/sh
+# Run by sleepwatcher before sleep: export Web Clipper settings, then commit and push the vault.
+exec >>"$HOME/.sleepwatcher.log" 2>&1
+PATH=/opt/homebrew/bin:/usr/bin:/bin
+STAMP=$(date +%y%m%dT%H%M)
+FAILURES="$HOME/.sleep-failures"
+MACHINE_ENV="$HOME/.config/machine.env"
+
+fail() {
+  echo "$STAMP $1"
+  echo "$1" >>"$FAILURES"
+}
+
+[ -r "$MACHINE_ENV" ] || { fail "$MACHINE_ENV missing, run Config/setup.sh"; exit 1; }
+. "$MACHINE_ENV"
+cd "$WORK/Vault" || { fail "no vault at $WORK/Vault"; exit 1; }
+
+WORK="$WORK" mise exec node@22 -- node "$WORK/Config/obsidian/web-clipper-export.mjs" ||
+  fail "Web Clipper export failed"
+
+git add -A
+if git diff --cached --quiet; then
+  echo "$STAMP clean, nothing staged"
+else
+  git commit -q -m "Pre-sleep backup from $MACHINE_NAME: $STAMP" || { fail "vault commit failed"; exit 1; }
+  echo "$STAMP committed"
+fi
+
+# Nothing to push when HEAD has 0 commits that upstream lacks.
+git rev-list --count @{u}..HEAD 2>/dev/null | grep -qx 0 && exit 0
+
+# The Mac may sleep mid-push, so cap it; unpushed commits go out next cycle.
+git push -q &
+PUSH=$!
+( sleep 10; kill "$PUSH" 2>/dev/null ) &
+TIMER=$!
+if wait "$PUSH"; then
+  echo "$STAMP pushed"
+else
+  echo "$STAMP push incomplete, retry next cycle"
+fi
+kill "$TIMER" 2>/dev/null

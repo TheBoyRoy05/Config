@@ -1,0 +1,11 @@
+#!/bin/sh
+# Run by sleepwatcher on wake: show a notification for anything the sleep script recorded as failed.
+FAILURES="$HOME/.sleep-failures"
+[ -s "$FAILURES" ] || exit 0
+
+/usr/bin/osascript \
+  -e 'on run argv' \
+  -e 'display notification (item 1 of argv) with title "Sleep backup failed" sound name "Basso"' \
+  -e 'end run' \
+  "$(tail -n 1 "$FAILURES") (details: ~/.sleepwatcher.log)"
+rm -f "$FAILURES"
