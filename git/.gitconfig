@@ -10,3 +10,8 @@
 	acp = "!f() { \
 		git ac \"$@\" && git push --force-with-lease --force-if-includes; \
 	}; f"
+
+[includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
+	path = github.gitconfig
+[includeIf "hasconfig:remote.*.url:https://github.com/**"]
+	path = github.gitconfig
